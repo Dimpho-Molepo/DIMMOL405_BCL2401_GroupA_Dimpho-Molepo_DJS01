@@ -19,7 +19,7 @@ const remainingFuel = fuelBurnRate*time //calculates remaining fuel
 const newVelocity = calcNewVel(acceleration, velocity, time) //calculates new velocity based on acceleration
 
 // Pick up an error with how the function below is called and make it robust to such errors
-calcNewVel = (velocity, acceleration, time) => { 
+const calcNewVel = (velocity, acceleration, time) => { 
   return velocity + (acceleration*time)
 }
 
