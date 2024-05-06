@@ -6,7 +6,7 @@ The Mars Climate Orbiter incident in 1999 is a stark reminder of the importance 
 
 In this challenge we were tasked to debug, refactor, and enhance JavaScript functions designed for determining the trajectory of a spacecraft. The initial functions are flawed and may result in incorrect calculations.
 
-![alt text](mars.gif)
+![mars](https://github.com/Dimpho-Molepo/DIMMOL405_BCL2401_GroupA_Dimpho-Molepo_DJS01/assets/136012291/0be48774-5b5d-4566-ac16-60d583ddfe08)
 
 ## Problem Areas to Address
 
