@@ -1,26 +1,57 @@
-/**
- * Debugging Guide
- * 1. Make the code more readable
- * 2. Pick up calculation errors
- * 3. Make these calculations robust such that the calculation does not give an incorrect result, it throws an error to the user if something has gone wrong (parameter used with an incorrect unit of measurement, etc)
- */
+import calculateNewVelocity from "./calculateNewVelocity.js";
+import remainingFuelCalculation from "./remainingFuelCalculation.js";
+import newDistanceCalculation from "./newDistanceCalculation.js";
 
-// Given Parameters
-const velocity = 10000; // velocity (km/h)
-const acceleration = 3; // acceleration (m/s^2)
-const time = 3600; // seconds (1 hour)
-const distance = 0; // distance (km)
-const fuel = 5000; // remaining fuel (kg)
-const fuelBurnRate = 0.5; // fuel burn rate (kg/s)
-const convertionFactor = 12960 // converts m/s^2 to km/h^2 (km/h^2 * s^2/m)
-
-const newDistance = distance + (velocity * (time / time)) //calcultes new distance
-const remainingFuel = fuel - fuelBurnRate * time //calculates remaining fuel
+// const newDistance = distance + velocity * (time / time); //calcultes new distance
+// const remainingFuel = fuel - fuelBurnRate * time; //calculates remaining fuel
 
 // Pick up an error with how the function below is called and make it robust to such errors
-const calculateNewVelocity = (velocity, acceleration, time) => velocity + (acceleration * convertionFactor * (time / time));
 
-const newVelocity = calculateNewVelocity(velocity, acceleration, time) //calculates new velocity based on acceleration
+const newVelocity = calculateNewVelocity({
+  velocity: {
+    velocityValue: 10000,
+    velocityUnits: "km/h",
+  },
+  acceleration: {
+    accelerationValue: 3,
+    accelerationUnits: "m/s^2",
+  },
+  time: {
+    timeValue: 3600,
+    timeUnits: "s",
+  },
+}); //calculates new velocity based on acceleration
+
+const newDistance = newDistanceCalculation({
+  time: {
+    timeValue: 3600,
+    timeUnits: "s",
+  },
+  distance: {
+    distanceValue: 0,
+    distanceUnits: "km",
+  },
+  velocity: {
+    velocityValue: 10000,
+    velocityUnits: "km/h",
+  }
+});
+
+const remainingFuel = remainingFuelCalculation({
+    time: {
+        timeValue: 3600,
+        timeUnits: "s",
+      },
+      fuel: {
+        fuelValue: 5000,
+        fuelUnits: "kg",
+      },
+      fuelBurnRate: {
+        fuelBurnRateValue: 0.5,
+        fuelBurnRateUnits: "kg/s",
+      }
+})
+
 
 console.log(`Corrected New Velocity: ${newVelocity} km/h`);
 console.log(`Corrected New Distance: ${newDistance} km`);
