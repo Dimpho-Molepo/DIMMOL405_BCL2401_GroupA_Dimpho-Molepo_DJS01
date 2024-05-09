@@ -2,43 +2,21 @@ import calculateNewVelocity from "./calculateNewVelocity.js";
 import remainingFuelCalculation from "./remainingFuelCalculation.js";
 import newDistanceCalculation from "./newDistanceCalculation.js";
 
-// const newDistance = distance + velocity * (time / time); //calcultes new distance
-// const remainingFuel = fuel - fuelBurnRate * time; //calculates remaining fuel
-
-// Pick up an error with how the function below is called and make it robust to such errors
-
-const newVelocity = calculateNewVelocity({
-  velocity: {
-    velocityValue: 10000,
-    velocityUnits: "km/h",
-  },
-  acceleration: {
-    accelerationValue: 3,
-    accelerationUnits: "m/s^2",
-  },
-  time: {
-    timeValue: 3600,
-    timeUnits: "s",
-  },
-}); //calculates new velocity based on acceleration
-
-const newDistance = newDistanceCalculation({
-  time: {
-    timeValue: 3600,
-    timeUnits: "s",
-  },
-  distance: {
-    distanceValue: 0,
-    distanceUnits: "km",
-  },
-  velocity: {
-    velocityValue: 10000,
-    velocityUnits: "km/h",
-  }
-});
-
-const remainingFuel = remainingFuelCalculation({
-    time: {
+// Props of the given parameters
+const props = {
+    velocity: {
+        velocityValue: 10000,
+        velocityUnits: "km/h",
+      },
+      acceleration: {
+        accelerationValue: 3,
+        accelerationUnits: "m/s^2",
+      },
+      distance: {
+        distanceValue: 0,
+        distanceUnits: "km",
+      },
+      time: {
         timeValue: 3600,
         timeUnits: "s",
       },
@@ -50,8 +28,11 @@ const remainingFuel = remainingFuelCalculation({
         fuelBurnRateValue: 0.5,
         fuelBurnRateUnits: "kg/s",
       }
-})
+}
 
+const newVelocity = calculateNewVelocity(props); //calculates new velocity based on acceleration and time
+const newDistance = newDistanceCalculation(props); //calculates new distance based on velocity and time trravelled
+const remainingFuel = remainingFuelCalculation(props) //calculates fuel used based on distance travelled and the fuel burn rate
 
 console.log(`Corrected New Velocity: ${newVelocity} km/h`);
 console.log(`Corrected New Distance: ${newDistance} km`);
