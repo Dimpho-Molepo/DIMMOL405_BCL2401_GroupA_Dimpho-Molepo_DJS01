@@ -15,7 +15,7 @@ In this challenge we were tasked to debug, refactor, and enhance JavaScript func
 
 ## Challenges
 
-The only way to debug and correct the provided functions is to understand the problem areas and how they are being handled. The was only one small challenge which was converting the acceleration from meters per squared second to kilometer per squared hour but it was just a minor issue nothing too daunting. To resolve this challenge I initiallized a convertionFactor variable and used it to convert the acceleration from meters per squared second to kilometer per squared hour.
+The only way to debug and correct the provided functions is to understand the problem areas and how they are being handled.The major challenge I faced while doing this project was trying the calculations more robust to different types of unexpected errors. I created different scripts to make the code more concise and more readable and to also seperate the different calculations. The was also another small challenge which was converting the acceleration from meters per squared second to kilometer per squared hour but it was just a minor issue nothing too daunting. To resolve this challenge I initiallized a convertionFactor variable and used it to convert the acceleration from meters per squared second to kilometer per squared hour. I used object destructuring and props to make the code less redundant making it a bit easier to maintain.
 
 ## Learning Outcomes 
 
@@ -24,6 +24,7 @@ The only way to debug and correct the provided functions is to understand the pr
 3. Understand the importance of debugging and testing in calculations.
 4. Refactor and correct functions to address unit mismatches and parameter misalignments.
 5. Be able to make the code readability for easier debugging.
+6. Understand object destructuring and the use of props to improve code readability and performance.
 
 ## Author
 Dimpho Molepo
