@@ -24,14 +24,18 @@ const newDistanceCalculation = (props) => {
     const { velocityValue, velocityUnits } = velocity;
     let { timeValue, timeUnits } = time;
 
-    if (velocityUnits !== 'km/h') throw new Error('Velocity units should be "km/h"')
-    if (distanceUnits !== 'km') throw new Error('Distance units should be "km"')
-    if (timeUnits !== 's') {
-        throw new Error('Time units should be "s"');
-    } else{
-        timeValue /= TIME_CONVERTION_FACTOR;
+    try {
+        if (velocityUnits !== 'km/h') throw new Error('Velocity units should be "km/h"')
+        if (distanceUnits !== 'km') throw new Error('Distance units should be "km"')
+        if (timeUnits !== 's') {
+            throw new Error('Time units should be "s"');
+        } else{
+            timeValue /= TIME_CONVERTION_FACTOR;
+        }
+    } catch (error) {
+        console.error(error.stack);
     }
-
+    
     return distanceValue + velocityValue * timeValue;
 }
 

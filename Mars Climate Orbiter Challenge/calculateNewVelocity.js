@@ -25,20 +25,23 @@ const calculateNewVelocity = (props) => {
     let { accelerationValue, accelerationUnits } = acceleration;
     let { timeValue, timeUnits } = time;
 
-    if (velocityUnits !== 'km/h') throw new Error('Velocity units should be "km/h"')
-    
-    if (accelerationUnits === 'm/s^2') {
-        accelerationValue *=  ACCELERATION_CONVERTION_FACTOR;
-    } else {
-        throw new Error('Acceleration units should be "m/s^2"');
+    try {
+        if (velocityUnits !== 'km/h') throw new Error('Velocity units should be "km/h"')
+        
+        if (accelerationUnits === 'm/s^2') {
+            accelerationValue *=  ACCELERATION_CONVERTION_FACTOR;
+        } else {
+            throw new Error('Acceleration units should be "m/s^2"');
+        }
+        
+        if (timeUnits === 's') {
+            timeValue /= TIME_CONVERTION_FACTOR;
+        } else {
+            throw new Error('Time units should be "s"')
+        }
+    } catch (error) {
+        console.error(error.stack);
     }
-    
-    if (timeUnits === 's') {
-        timeValue /= TIME_CONVERTION_FACTOR;
-    } else {
-        throw new Error('Time units should be "s"')
-    }
-
     return velocityValue + (accelerationValue * timeValue);
 }
 

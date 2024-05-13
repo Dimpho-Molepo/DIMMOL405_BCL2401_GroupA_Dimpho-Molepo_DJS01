@@ -21,9 +21,13 @@ const remainingFuelCalculation = (props) => {
     const { fuelBurnRateValue, fuelBurnRateUnits} = fuelBurnRate;
     const {timeValue, timeUnits} = time;
 
-    if (timeUnits !== 's') throw new Error('Time units should be "s"')
-    if (fuelUnits !== 'kg') throw new Error('Fuel units should be "kg"')
-    if (fuelBurnRateUnits !== 'kg/s') throw new Error ('Fuel burn rateshould be in "kg/s"')
+    try {
+        if (timeUnits !== 's') throw new Error('Time units should be "s"')
+        if (fuelUnits !== 'kg') throw new Error('Fuel units should be "kg"')
+        if (fuelBurnRateUnits !== 'kg/s') throw new Error ('Fuel burn rateshould be in "kg/s"')
+    } catch (error) {
+        console.error(errorstack);
+    }
 
     return fuelValue - fuelBurnRateValue * timeValue;
 }
